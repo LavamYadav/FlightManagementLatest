@@ -57,7 +57,6 @@ public class Booking {
 	
 	public Booking() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public int getBookingId() {

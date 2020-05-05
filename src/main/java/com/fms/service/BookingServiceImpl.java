@@ -21,7 +21,6 @@ public class BookingServiceImpl implements BookingService {
 
 	@Override
 	public Booking addBooking(Booking booking) {
-		// TODO Auto-generated method stub
 		ScheduleFlight scheduleFlight = new ScheduleFlight();
 		scheduleFlight = scheduleRepo.findByflight(booking.getFlight());
 		scheduleFlight.setAvailableSeats(scheduleFlight.getAvailableSeats()-booking.getNoOfPassengers());

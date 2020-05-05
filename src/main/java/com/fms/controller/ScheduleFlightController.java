@@ -18,38 +18,37 @@ import com.fms.service.ScheduleFlightService;
 
 @RestController
 public class ScheduleFlightController {
-	
+
 	@Autowired
 	ScheduleFlightService scheduleFlightService;
-	
+
 	@PostMapping(value = "/add")
 	public int addScheduleFlight(@RequestBody ScheduleFlight scheduleflight) {
-		
+
 		scheduleFlightService.addScheduleFlight(scheduleflight);
-		return scheduleflight.getScheduleFlightId(); 
+		return scheduleflight.getScheduleFlightId();
 	}
+
 	@GetMapping(value = "/showdata")
-	public List<ScheduleFlight> viewScheduleFlights(@RequestBody Airport source,@RequestBody Airport destination,@RequestBody LocalDate flightDate)
-	{
+	public List<ScheduleFlight> viewScheduleFlights(@RequestBody Airport source, @RequestBody Airport destination,
+			@RequestBody LocalDate flightDate) {
 		return scheduleFlightService.viewScheduleFlight();
 	}
-	@GetMapping(value="/showdatabyid/{scheduleFlightId}")
-	public ScheduleFlight viewScheduleFlights(@PathVariable("scheduleFlightId") int scheduleFlightId) 
-	{
+
+	@GetMapping(value = "/showdatabyid/{scheduleFlightId}")
+	public ScheduleFlight viewScheduleFlights(@PathVariable("scheduleFlightId") int scheduleFlightId) {
 		return scheduleFlightService.viewScheduleFlightsById(scheduleFlightId);
 	}
+
 	@DeleteMapping("/scheduleflight/{scheduleFlightId}")
-	public void deleteScheduleFlightById(@PathVariable("scheduleFlightId") int scheduleFlightId) 
-	{
-	scheduleFlightService.deleteScheduleFlight(scheduleFlightId);
+	public void deleteScheduleFlightById(@PathVariable("scheduleFlightId") int scheduleFlightId) {
+		scheduleFlightService.deleteScheduleFlight(scheduleFlightId);
 	}
-	
+
 	@PutMapping("/modifyScheduleFlight")
 	private ScheduleFlight modifyScheduleFlight(ScheduleFlight scheduleFlight) {
-		
+
 		return scheduleFlightService.modifyScheduleFlight(scheduleFlight);
 	}
-	
-	}
 
-
+}
